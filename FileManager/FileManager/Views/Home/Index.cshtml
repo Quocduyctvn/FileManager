@@ -1,8 +1,63 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - FileManager</title>
+    <link rel="stylesheet" href="~/css/filemanager.css" asp-append-version="true" />
+
+	<link href="~/lib/filemanager/css/filemanager.min.css" rel="stylesheet" asp-append-version="true" />
+
+</head>
+<body>
+
+    <div class="container" x-data="Dirs">
+        <div class="filemanager ">
+            @* thanh cong cu  *@
+            <div class="fm-toolbox">
+                Thanh công cụ
+            </div>
+
+
+            @* cay thu muc  *@
+            <div class="fm-folder-tree">
+                <ul>
+                    <template x-for="(d, idx) in _folderTree" >
+                        <li :class="d.cssClass">
+                            <button class="btn-toggle" x-text="d.isOpen ? '-' : '+'" x-on:click="toggleFolder(idx)"></button>
+                            <span x-text="d.folderName"> </span>
+                        </li>
+                    </template>
+
+                </ul>
+            </div>
+
+            @* noi dung  *@
+            <div class="fm-main-panel">
+               
+                @* hiển thị file  *@
+
+
+            </div>
+
+            <div class="fm-additional-info">
+                thông tin bổ sung 
+            </div>
+            @* thông tin bổ sung  *@
+        </div>
+    </div>
+	<script defer src="~/lib/alpinejs/cdn.min.js"></script>
+    <script src="~/lib/filemanager/js/filemanager.js" asp-append-version="true"></script>
+</body>
+</html>
+
+@* <template x-for="d in _folderTree">
+    <li :class="d.cssClass" x-on:click="openFolder(d.level)">
+        <button data-expand-char="+" data-collapse-char="-">+</button>
+        <span x-text="d.folderName"> </span>
+    </li>
+</template> *@
