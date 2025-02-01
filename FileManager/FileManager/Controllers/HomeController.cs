@@ -13,9 +13,10 @@ namespace FileManager.Controllers
 			_logger = logger;
 		}
 
+		[HttpGet]
 		public IActionResult Index()
 		{
-			return View();
+            return View();
 		}
 
 		public IActionResult Privacy()
